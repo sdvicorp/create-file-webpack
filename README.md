@@ -30,5 +30,9 @@ var opts = {
     fileName: 'index.js',
     // content of the file
     content: 'export * from ./module.umd.js'
+    // or function that returns content of the file
+    content: () => {
+        return 'export * from ./module.umd.js'
+    }
 };
 ````

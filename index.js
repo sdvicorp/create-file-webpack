@@ -13,7 +13,11 @@ var CreateFilePlugin = (function () {
 
         compiler.plugin('done', function() {
             const fullPath = path.join(_this.options.path, _this.options.fileName);
-            write.sync(fullPath, _this.options.content);
+            var content = _this.options.content;
+            if (typeof content == 'function') {
+              content = content();
+            }
+            write.sync(fullPath, content);
         });
     };
 
